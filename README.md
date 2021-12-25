@@ -30,3 +30,4 @@ Write dialogue skill (like Alice or Alexa) on DF Framework (DFF):
   - dff_coronavirus_skill
   - dff_funfact_skill
   - dff_book_skill
+  - dff_weather_skill
