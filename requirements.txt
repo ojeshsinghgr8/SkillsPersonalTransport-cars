@@ -1,2 +1,6 @@
 df_engine==0.8.1
 nltk==3.5
+tensorflow
+transformers
+pandas
+sklearn
