@@ -1,8 +1,13 @@
-# dff-TEMPLATE-skill
+# Skill Personal Transport
 
 ## Description
 
-#TODO: describe **dff-TEMPLATE-skill** 
+Project idea is build chatbot for a company with provides following services
+1. Car Rental
+2. Roadside Assistance
+3. Car Service
+
+It uses Dialogflow engine and bert model to identify the intent.
 ## Quickstart
 
 ```bash
@@ -12,12 +17,4 @@ Run interactive mode
 ```bash
 python run_interactive.py
 ```
-Run tests
-```bash
-python run_test.py
-```
-## Resources
-#TODO: resources
-* Execution time: ????
-* Starting time: ????
-* RAM: ???? MB
+
