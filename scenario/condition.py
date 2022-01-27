@@ -17,8 +17,7 @@ def is_car_service(ctx: Context, actor: Actor, *args, **kwargs) -> bool:
             return_token_type_ids = False,
             return_attention_mask = True,
             verbose = True) 
-        validation = prepModel.predict({'input_ids':x_val['input_ids'],'attention_mask':x_val['attention_mask']})*100 
-        print('is_car_service',validation)   
+        validation = prepModel.predict({'input_ids':x_val['input_ids'],'attention_mask':x_val['attention_mask']})*100          
         return max(validation[0])>50 and validation[0][0]==max(validation[0])
     else:
         return False
