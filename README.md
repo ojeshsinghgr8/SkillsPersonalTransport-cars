@@ -2,7 +2,7 @@
 
 ## Description
 
-Project idea is build chatbot for a company with provides following services
+Project idea is to build chatbot for a company which provides following services
 1. Car Rental
 2. Roadside Assistance
 3. Car Service
