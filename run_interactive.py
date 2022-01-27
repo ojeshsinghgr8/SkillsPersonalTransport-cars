@@ -12,6 +12,8 @@ from init_model import prepare_model
 import scenario.condition as cust_cnd
 import os
 
+
+
 def clearConsole():
     command = 'clear'
     if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls

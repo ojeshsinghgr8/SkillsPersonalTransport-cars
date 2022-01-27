@@ -13,7 +13,7 @@ plot = {
             }
         },
         "intro": {
-            RESPONSE: "Welcome, to our Car service catbot.\n We provide following services \n 1. Car Renting \n 2. Roadside Assistance \n 3. Car service".format(), 
+            RESPONSE: "Welcome, to our Car service catbot.\n We provide following services \n 1. Renting \n 2. Roadside Assistance \n 3. Maintenance".format(), 
             TRANSITIONS: {
                 ("car_rental", "start"): cust_cnd.is_book_car,
                 ("road_assistance", "start"): cust_cnd.is_road_assistance,
@@ -32,8 +32,8 @@ plot = {
         "start":{
             RESPONSE: "Welcome, to our Rental service.\n What type of car you want to rent \n 1. SUV \n 2. Sedan".format(), 
             TRANSITIONS: {
-                    ("suv","start"): cnd.regexp(r".*suv", re.IGNORECASE),
-                    ("sedan"): cnd.regexp(r".*sedan", re.IGNORECASE),                    
+                    ("suv","start"): cnd.regexp(r".*(suv|1)", re.IGNORECASE),
+                    ("sedan","start"): cnd.regexp(r".*(sedan|2)", re.IGNORECASE),                    
                 }
         },
         "book_success":{
