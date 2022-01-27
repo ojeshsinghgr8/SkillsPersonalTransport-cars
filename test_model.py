@@ -1,14 +1,9 @@
 
 
 from transformers import AutoTokenizer,TFBertModel
-import tensorflow as tf
-from tensorflow.keras.layers import Input, Dense
 from init_model import prepare_model
 
 tokenizer = AutoTokenizer.from_pretrained('bert-base-cased')
-bert = TFBertModel.from_pretrained('bert-base-cased')
-
-
 new_model =  prepare_model()
 
 texts = input(str('input the text'))
