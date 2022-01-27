@@ -5,72 +5,22 @@ from typing import Optional, Union
 import re
 from scenario.main import actor
 from df_engine.core import Actor, Context
-from df_engine.core.keywords import GLOBAL,TRANSITIONS, RESPONSE
-import df_engine.conditions as cnd
+
+
 from annotators.main import annotate
 from init_model import prepare_model
 import scenario.condition as cust_cnd
+import os
 
-plot = {
-    "global": {
-        "start": {
-            RESPONSE: "",
-            TRANSITIONS: {
-                "intro": cnd.regexp(r"hi|hello", re.IGNORECASE),
-            }
-        },
-        "intro": {
-            RESPONSE: "Welcome, to our Car service catbot.\n We provide following services \n 1. Car Renting \n 2. Roadside Assistance \n 3. Car service".format(), 
-            TRANSITIONS: {
-                ("car_rental", "start"): cust_cnd.is_book_car,
-                ("road_assistance", "start"): cust_cnd.is_road_assistance,
-                ("car_service", "start"): cust_cnd.is_car_service,
-            }
-        },
-        "fallback": {
-            RESPONSE: "Oops!! something went wrong. Lets start again...",
-            TRANSITIONS: {
-                ("global", "intro"): cnd.true()
-            }
-        }
-    },
-    "car_rental":{
-        "start":{
-            RESPONSE: "Welcome, to our Rental service.\n What type of car you want to rent SUV, Sedan or Hatchback".format(), 
-            TRANSITIONS: {
-                    ("car_rental", "suv"): cnd.regexp(r".*suv", re.IGNORECASE),
-                    ("car_rental", "sedan"): cnd.regexp(r".*sedan", re.IGNORECASE),
-                    ("car_rental", "hatchback"): cnd.regexp(r".*hatchback", re.IGNORECASE),                    
-                }
-        },
-        "suv":{
-            RESPONSE: "Great, we have following SUV ".format(), 
-        },
-        "sedan":{
-            RESPONSE: "Great, we have following Sedan ".format(), 
-        },
-        "hatchback":{
-            RESPONSE: "Great, we have following Hatchback ".format(), 
-        }
-       
-    },
-    "road_assistance":{
-         "start":{
-            RESPONSE: "Welcome, to our Roadside assistance service.".format(), 
-           
-        },
-    },
-    "car_service":{
-         "start":{
-            RESPONSE: "Welcome, to our car maintenance service.".format(), 
-           
-        },
-    }
-}
+def clearConsole():
+    command = 'clear'
+    if os.name in ('nt', 'dos'):  # If Machine is running on Windows, use cls
+        command = 'cls'
+    os.system(command)
 
 logger = logging.getLogger(__name__)
 
-actor = Actor(plot, start_label=("global", "start"), fallback_label=("global", "fallback"))
+
 
 def turn_handler(
     in_request: str,
@@ -106,7 +56,10 @@ def run_interactive_mode(actor):
 
 if __name__ == "__main__":
     ctx = {}
+    print("Training model")
     cust_cnd.prepModel = prepare_model()
+    print("Training model complited")
+    clearConsole()
     # while True:
     #     in_request = input("type your answer: ")
     #     st_time = time.time()
